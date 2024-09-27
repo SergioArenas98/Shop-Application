@@ -1,0 +1,11 @@
+Product:Manzana;Wholesaler Price:10.0;Stock:10;
+Product:Pera;Wholesaler Price:20.0;Stock:20;
+Product:Hamburguesa;Wholesaler Price:30.0;Stock:30;
+Product:Fresa;Wholesaler Price:5.0;Stock:20;
+Product:Danone;Wholesaler Price:12.0;Stock:20;
+Product:Naranja;Wholesaler Price:11.0;Stock:20;
+Product:Zumo;Wholesaler Price:25.0;Stock:20;
+Product:Melón;Wholesaler Price:3.0;Stock:20;
+Product:Sandía;Wholesaler Price:14.0;Stock:20;
+Product:Aguacate;Wholesaler Price:10.0;Stock:20;
+Product:Cacaolat;Wholesaler Price:20.0;Stock:20;
