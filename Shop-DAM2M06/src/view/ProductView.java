@@ -3,8 +3,6 @@ package view;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -38,7 +36,6 @@ public class ProductView extends JDialog implements ActionListener {
 		
 		this.shop = shop;
 		this.option = option;
-		
 		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
