@@ -11,19 +11,19 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-
+import javax.swing.JOptionPane;
 import main.Shop;
 import model.Amount;
 import model.Employee;
 import model.Product;
-import model.Sale;
+import view.FolderNameView;
 
 public class DaoImplFile implements Dao {
 	
-    private Shop shop;
-
+    Shop shop;
+	
     public DaoImplFile(Shop shop) {
-        this.shop = shop;
+    	this.shop = shop;
     }
 
 	@Override
@@ -99,7 +99,21 @@ public class DaoImplFile implements Dao {
 		// Set the file's route
 	    File newFolder = new File(System.getProperty("user.dir") + File.separator + "files");
 	    if (!newFolder.exists()) {
-	        newFolder.mkdir();
+	    	FolderNameView folderNameView = new FolderNameView(null);
+	        folderNameView.setVisible(true);
+	        
+	        // Get folder's name
+	        String folderName = folderNameView.getFolderName();
+	        
+	        if (folderName != null && !folderName.trim().isEmpty()) {
+	            // If folder's name is valid, create folder
+	            newFolder = new File(System.getProperty("user.dir") + File.separator + folderName);
+	            newFolder.mkdir();
+	        } else {
+	            // If folder's name not valid or cancel, return false 
+	            JOptionPane.showMessageDialog(null, "El nombre de la carpeta no es válido.", "Error", JOptionPane.ERROR_MESSAGE);
+	            return false;
+	        }
 	    }
 
 	    // Get the current date and format it as yyyy-mm-dd

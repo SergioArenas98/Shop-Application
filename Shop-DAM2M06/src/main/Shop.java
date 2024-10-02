@@ -11,6 +11,7 @@ import view.CashView;
 import view.InventoryView;
 import view.LoginView;
 import view.ProductView;
+import view.FolderNameView;
 import model.Amount;
 import java.util.Scanner;
 import javax.swing.JDialog;
@@ -25,8 +26,8 @@ public class Shop {
     private ArrayList<Sale> sales;
     int sale_num = 0;
     private DaoImplFile dao;
-
     final static double TAX_RATE = 1.04;
+    String nameFolder;
 
     public Shop() {
         cash = new Amount(150.0, "€");
@@ -151,7 +152,6 @@ public class Shop {
      * Open CashView frame
      */
     public void openCashView(Shop shop) {
-    	
     	CashView dialog = new CashView(shop);
 		dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		dialog.setVisible(true);
@@ -160,8 +160,7 @@ public class Shop {
     /**
      * Open ProductView frame
      */
-    public void openProductView(Shop shop, int option) {
-    	
+    public void openProductView(Shop shop, int option) {   	
     	ProductView dialog = new ProductView(shop, option);
 		dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		dialog.setVisible(true);
@@ -175,6 +174,15 @@ public class Shop {
         InventoryView inventoryView = new InventoryView(this);
         inventoryView.setModal(true);
         inventoryView.setVisible(true);
+    }
+    
+    /**
+     * Open ProductView frame
+     */
+    public void openFolderNameView(Shop shop) {
+    	FolderNameView dialog = new FolderNameView(shop);
+		dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		dialog.setVisible(true);
     }
     
 	/*================================*/
