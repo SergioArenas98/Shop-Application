@@ -53,10 +53,10 @@ public class DaoImplFile implements Dao {
 	                // Divide into keys and values
 	                String[] data = section.split(":");
 
-	                switch (data[0]/*.trim()*/) {
+	                switch (data[0]) {
 	                	// Product name
 	                    case "Product":
-	                        name = data[1]/*.trim()*/;
+	                        name = data[1];
 	                        break;
 
 	                    // Price
