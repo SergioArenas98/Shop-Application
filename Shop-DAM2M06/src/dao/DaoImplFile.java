@@ -53,19 +53,19 @@ public class DaoImplFile implements Dao {
 	                // Divide into keys and values
 	                String[] data = section.split(":");
 
-	                switch (data[0].trim()) {
+	                switch (data[0]/*.trim()*/) {
+	                	// Product name
 	                    case "Product":
-	                        // Product name
-	                        name = data[1].trim();
+	                        name = data[1]/*.trim()*/;
 	                        break;
 
+	                    // Price
 	                    case "Wholesaler Price":
-	                        // Price
 	                        wholesalerPrice = Double.parseDouble(data[1]);
 	                        break;
 
+	                    // Stock
 	                    case "Stock":
-	                        // Stock
 	                        stock = Integer.parseInt(data[1]);
 	                        break;
 
@@ -141,11 +141,10 @@ public class DaoImplFile implements Dao {
 
 	        // Iterate on inventory and write in the file
 	        for (Product product : inventory) {
-	            pw.println("Product:" + product.getName() + ";Wholesaler Price:" + product.getWholesalerPrice().getValue() +
-	                    ";Stock:" + product.getStock() + ";");
+	            pw.println("Product:" + product.getName() + ";Stock:" + product.getStock() + ";");
 	        }
 	        
-	        pw.println("Número de productos:" + inventory.size());
+	        pw.print("\n"+ "Número total de productos:" + inventory.size());
 
 	        // If successful, return true
 	        return true;
