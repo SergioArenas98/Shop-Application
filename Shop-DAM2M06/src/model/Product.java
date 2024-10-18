@@ -1,8 +1,5 @@
 package model;
 
-import dao.Dao;
-import dao.DaoImplJDBC;
-
 public class Product {
 	private int id;
     private String name;
@@ -12,8 +9,6 @@ public class Product {
     private int stock;
     private static int totalProducts;
     
-    private Dao productDao = new DaoImplJDBC();
-    
     final static double EXPIRATION_RATE=0.60;
     
 	public Product(String name, Amount wholesalerPrice, boolean available, int stock) {
@@ -21,11 +16,14 @@ public class Product {
 		this.id = totalProducts + 1;
 		this.name = name;
 		this.wholesalerPrice = wholesalerPrice;
-		this.publicPrice = new Amount(0.0, ""); 
+		this.publicPrice = new Amount(0.0, "");
 		this.publicPrice.setValue(getWholesalerPrice().getValue() * 2);
 		this.available = available;
 		this.stock = stock;
 		totalProducts++;
+	}
+	
+	public Product() {
 	}
 
 	public int getId() {
