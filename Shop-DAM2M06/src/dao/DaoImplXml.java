@@ -46,16 +46,11 @@ public class DaoImplXml implements Dao {
 	@Override
 	public boolean writeInventory(ArrayList<Product> inventory) {
 	    try {
-	    	// Generate the XML with DomWriter
+	        // Generate the XML with DomWriter
 	        domWriter.generateDocument(inventory);
-	        domWriter.generateXml();
-	        
-	        // Return true if successful
-	        return true;
+	        return domWriter.generateXml();
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	        
-	        // Return true if fails
 	        return false;
 	    }
 	}

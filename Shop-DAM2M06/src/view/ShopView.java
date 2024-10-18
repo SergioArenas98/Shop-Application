@@ -102,14 +102,10 @@ public class ShopView extends JFrame implements ActionListener, KeyListener{
 			boolean writeInventory = shop.writeInventory();
 	        if (writeInventory) {
 	            JOptionPane.showMessageDialog(this, 
-	                "La exportación se ha realizado con éxito.", 
-	                "EXPORTACIÓN CORRECTA", 
-	                JOptionPane.INFORMATION_MESSAGE);
+	                "La exportación se ha realizado con éxito.", "EXPORTACIÓN CORRECTA", JOptionPane.INFORMATION_MESSAGE);
 	        } else {
 	            JOptionPane.showMessageDialog(this, 
-	                "La exportación no se ha podido realizar.", 
-	                "ERROR EXPORTACIÓN", 
-	                JOptionPane.ERROR_MESSAGE);
+	                "La exportación no se ha podido realizar.", "ERROR EXPORTACIÓN", JOptionPane.ERROR_MESSAGE);
 	        }
 		} 
 		
