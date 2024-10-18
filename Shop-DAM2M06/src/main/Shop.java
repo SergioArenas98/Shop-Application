@@ -16,16 +16,16 @@ import model.Amount;
 import java.util.Scanner;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import dao.DaoImplFile;
+import dao.DaoImplXml;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Shop {
-    public Amount cash = new Amount(100.00, "€");
+    public Amount cash;
     public ArrayList<Product> inventory;
     private ArrayList<Sale> sales;
     int sale_num = 0;
-    private DaoImplFile dao;
+    private DaoImplXml dao;
     final static double TAX_RATE = 1.04;
     String nameFolder;
 
@@ -33,7 +33,7 @@ public class Shop {
         cash = new Amount(150.0, "€");
         inventory = new ArrayList<Product>();
         sales = new ArrayList<Sale>();
-        this.dao = new DaoImplFile(this);
+        this.dao = new DaoImplXml(this);
         readInventory();
     }
     
