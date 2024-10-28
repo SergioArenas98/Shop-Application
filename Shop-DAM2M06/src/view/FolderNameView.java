@@ -73,7 +73,7 @@ public class FolderNameView extends JDialog implements ActionListener {
 			}
 		}
 
-		// if user clicks on OK button
+		// If user clicks on OK button
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				folderName = nameFolder.getText();
@@ -81,7 +81,7 @@ public class FolderNameView extends JDialog implements ActionListener {
 			}
 		});
 		
-		// if user clicks on cancel button
+		// If user clicks on cancel button
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				folderName = null;
