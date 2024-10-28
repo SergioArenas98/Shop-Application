@@ -99,13 +99,12 @@ public class ShopView extends JFrame implements ActionListener, KeyListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if (e.getSource() == exportInventory) {
-			boolean writeInventory = shop.writeInventory();
-	        if (writeInventory) {
+			boolean correctExportation = shop.writeInventory();
+	        if (correctExportation) {
 	            JOptionPane.showMessageDialog(this, 
 	                "La exportación se ha realizado con éxito.", "EXPORTACIÓN CORRECTA", JOptionPane.INFORMATION_MESSAGE);
 	        } else {
-	            JOptionPane.showMessageDialog(this, 
-	                "La exportación no se ha podido realizar.", "ERROR EXPORTACIÓN", JOptionPane.ERROR_MESSAGE);
+	            JOptionPane.showMessageDialog(this, "La exportación no se ha podido realizar.", "ERROR EXPORTACIÓN", JOptionPane.ERROR_MESSAGE);
 	        }
 		} 
 		

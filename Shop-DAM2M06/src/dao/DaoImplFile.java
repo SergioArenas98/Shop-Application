@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import main.Shop;
 import model.Amount;
 import model.Employee;
@@ -110,8 +109,7 @@ public class DaoImplFile implements Dao {
 	            newFolder = new File(System.getProperty("user.dir") + File.separator + folderName);
 	            newFolder.mkdir();
 	        } else {
-	            // If folder's name not valid or cancel, return false 
-	            JOptionPane.showMessageDialog(null, "El nombre de la carpeta no es válido.", "Error", JOptionPane.ERROR_MESSAGE);
+	            // If folder's name not valid or cancel, return false
 	            return false;
 	        }
 	    }
@@ -138,13 +136,16 @@ public class DaoImplFile implements Dao {
 
 	    try (FileWriter fw = new FileWriter(inventoryFile, false);
 	         PrintWriter pw = new PrintWriter(fw)) {
+	    	
+	    	int counter = 1;
 
 	        // Iterate on inventory and write in the file
 	        for (Product product : inventory) {
-	            pw.println("Product:" + product.getName() + ";Stock:" + product.getStock() + ";");
+	            pw.println(counter + ";Product:" + product.getName() + ";Stock:" + product.getStock() + ";");
+	            counter++;
 	        }
 	        
-	        pw.print("\n"+ "Número total de productos:" + inventory.size());
+	        pw.print("Número total de productos:" + inventory.size());
 
 	        // If successful, return true
 	        return true;
@@ -157,7 +158,7 @@ public class DaoImplFile implements Dao {
 	}
 
 	@Override
-	public void connect() throws SQLException {	
+	public void connect() {	
 	}
 
 	@Override

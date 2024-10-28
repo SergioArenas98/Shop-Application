@@ -20,15 +20,19 @@ public class DaoImplJDBC implements Dao{
      * Create connection to SQL database
      */
 	@Override
-	public void connect() throws SQLException {
+	public void connect() {
 
 		// Create variables with database information
         String url = "jdbc:mysql://localhost:3306/Shop";
         String user = "root";
         String password = "Sergio14Sejuma18";
 
-        // Create connection to database
-        this.connection = DriverManager.getConnection(url, user, password);
+        try {
+        	// Create connection to database
+			this.connection = DriverManager.getConnection(url, user, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
