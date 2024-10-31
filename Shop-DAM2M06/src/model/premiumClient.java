@@ -4,7 +4,7 @@ import main.Payable;
 
 public class premiumClient extends Client implements Payable{
 	
-	private static int points = 0;
+	private int points = 0;
 
 	public premiumClient(int memberId, String name, Amount balance, int points) {
 		super(memberId, name, balance);

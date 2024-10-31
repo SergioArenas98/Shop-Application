@@ -20,7 +20,7 @@ public class DaoImplJDBC implements Dao{
      * Create connection to SQL database
      */
 	@Override
-	public void connect() throws SQLException {
+	public void connect() {
 
 		// Create variables with database information
         String url = "jdbc:mysql://localhost:3306/Shop";
@@ -28,7 +28,11 @@ public class DaoImplJDBC implements Dao{
         String password = "Sergio14Sejuma18";
 
         // Create connection to database
-        this.connection = DriverManager.getConnection(url, user, password);
+        try {
+			this.connection = DriverManager.getConnection(url, user, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
@@ -120,9 +124,13 @@ public class DaoImplJDBC implements Dao{
     }*/
 
 	@Override
-	public void disconnect() throws SQLException {
+	public void disconnect() {
 		if (connection != null) {
-			connection.close();
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

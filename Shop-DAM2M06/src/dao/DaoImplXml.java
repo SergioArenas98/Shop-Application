@@ -1,6 +1,5 @@
 package dao;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -56,7 +55,7 @@ public class DaoImplXml implements Dao {
 	}
 
 	@Override
-	public void connect() throws SQLException {
+	public void connect() {
 	}
 	
 	@Override
@@ -65,6 +64,6 @@ public class DaoImplXml implements Dao {
 	}
 	
 	@Override
-	public void disconnect() throws SQLException {
+	public void disconnect() {
 	}
 }

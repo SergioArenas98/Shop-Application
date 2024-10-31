@@ -33,4 +33,8 @@ public class Client extends Person implements Payable{
 			return false;
 		}
 	}
+
+	public static int getMemberid() {
+		return MEMBERID;
+	}
 }

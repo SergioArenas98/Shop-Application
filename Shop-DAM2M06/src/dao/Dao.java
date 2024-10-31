@@ -1,17 +1,16 @@
 package dao;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Employee;
 import model.Product;
 
 public interface Dao {
     
-	void connect() throws SQLException;
+	void connect();
     
 	Employee getEmployee(int employeeId, String password);
     
-	void disconnect() throws SQLException;
+	void disconnect();
 	
 	ArrayList<Product> getInventory();
 	

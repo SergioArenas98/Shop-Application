@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -157,7 +156,7 @@ public class DaoImplFile implements Dao {
 	}
 
 	@Override
-	public void connect() throws SQLException {	
+	public void connect() {	
 	}
 
 	@Override
@@ -166,6 +165,6 @@ public class DaoImplFile implements Dao {
 	}
 
 	@Override
-	public void disconnect() throws SQLException {	
+	public void disconnect() {	
 	}
 }
