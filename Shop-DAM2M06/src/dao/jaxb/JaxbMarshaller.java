@@ -12,6 +12,7 @@ public class JaxbMarshaller {
 	
     public boolean init(Products products) {
         try {
+        	// Create Marshaller object
             JAXBContext jaxbContext = JAXBContext.newInstance(Products.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
@@ -21,10 +22,12 @@ public class JaxbMarshaller {
     	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     	    String formattedDate = currentDate.format(formatter);
     	    
-    	    // Set route
+    	    // Set export route
     	    String filePath = "C:/Users/sejum/git/Shop-DAM2M06/Shop-DAM2M06/jaxb/inventory_" + formattedDate + ".xml";
             
+    	    // Convert inventory to XML with Marshaller
             jaxbMarshaller.marshal(products, new File(filePath));
+            
             return true;
         } catch (JAXBException e) {
             e.printStackTrace();
