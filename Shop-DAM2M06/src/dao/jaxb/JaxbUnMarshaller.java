@@ -12,7 +12,7 @@ public class JaxbUnMarshaller {
 
 		try {
 			// Set import route
-			String filePath = "C:/Users/sejum/git/Shop-DAM2M06/Shop-DAM2M06/files/inputInventory.xml";
+			String filePath = "C:/Users/sejum/git/Shop-DAM2M06/Shop-DAM2M06/jaxb/inputInventory.xml";
 			
 			// Create UnMarshaller object
 			JAXBContext context = JAXBContext.newInstance(Products.class);

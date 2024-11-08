@@ -1,31 +1,24 @@
 package model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "wholesaler_price", propOrder = { "value", "currency" })
 public class Amount {
-	
-	private static final String CURRENCY = "€";
-	
-	@XmlAttribute(name = "value")
+    
+    public static final String CURRENCY = "€";
     private double value;
-	
     private String currency;
 
     public Amount(double value, String currency) {
         this.value = value;
         this.currency = CURRENCY;
     }
-    
-    // Constructor for JAXB
+
     public Amount() {
         this.currency = CURRENCY;
     }
 
+    @XmlValue
     public double getValue() {
         return value;
     }
@@ -34,16 +27,12 @@ public class Amount {
         this.value = value;
     }
 
+    @XmlAttribute(name = "currency")
     public String getCurrency() {
-        return currency;
+        return CURRENCY;
     }
 
     public void setCurrency(String currency) {
         this.currency = currency;
-    }
-
-    @Override
-    public String toString() {
-        return value + currency;
     }
 }

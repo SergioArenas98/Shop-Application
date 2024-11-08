@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <products>
     <product name="Manzana">
-        <wholesaler_price currency="Euro">10.0</wholesaler_price>
+        <wholesalerPrice currency="Euro">10.0</wholesalerPrice>
         <stock>10</stock>
     </product>
     <product name="Pera">
-        <wholesaler_price currency="Euro">20.0</wholesaler_price>
+        <wholesalerPrice currency="Euro">20.0</wholesalerPrice>
         <stock>20</stock>
     </product>
     <product name="Hamburguesa">
-        <wholesaler_price currency="Euro">30.0</wholesaler_price>
+        <wholesalerPrice currency="Euro">30.0</wholesalerPrice>
         <stock>30</stock>
     </product>
     <product name="Fresa">
-        <wholesaler_price currency="Euro">5.0</wholesaler_price>
+        <wholesalerPrice currency="Euro">5.0</wholesalerPrice>
         <stock>20</stock>
     </product>
     <product name="Danone">
-        <wholesaler_price currency="Euro">12.0</wholesaler_price>
+        <wholesalerPrice currency="Euro">12.0</wholesalerPrice>
         <stock>20</stock>
     </product>
     <product name="Naranja">
-        <wholesaler_price currency="Euro">11.0</wholesaler_price>
+        <wholesalerPrice currency="Euro">11.0</wholesalerPrice>
         <stock>20</stock>
     </product>
     <product name="Zumo">
-        <wholesaler_price currency="Euro">25.0</wholesaler_price>
+        <wholesalerPrice currency="Euro">25.0</wholesalerPrice>
         <stock>20</stock>
     </product>
     <product name="Melón">
-        <wholesaler_price currency="Euro">3.0</wholesaler_price>
+        <wholesalerPrice currency="Euro">3.0</wholesalerPrice>
         <stock>20</stock>
     </product>
     <product name="Sandía">
-        <wholesaler_price currency="Euro">14.0</wholesaler_price>
+        <wholesalerPrice currency="Euro">14.0</wholesalerPrice>
         <stock>20</stock>
     </product>
     <product name="Aguacate">
-        <wholesaler_price currency="Euro">10.0</wholesaler_price>
+        <wholesalerPrice currency="Euro">10.0</wholesalerPrice>
         <stock>20</stock>
     </product>
     <product name="Prueba">
-        <wholesaler_price currency="Euro">20.0</wholesaler_price>
+        <wholesalerPrice currency="Euro">20.0</wholesalerPrice>
         <stock>20</stock>
     </product>
 </products>

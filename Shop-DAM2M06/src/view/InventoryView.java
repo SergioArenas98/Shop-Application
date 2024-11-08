@@ -55,7 +55,7 @@ public class InventoryView extends JDialog {
     private void loadInventory(Shop shop) {
         // Get inventory
         ArrayList<Product> products = shop.inventory;
-
+        
         // Empty the table
         tableModel.setRowCount(0);
 
@@ -64,9 +64,9 @@ public class InventoryView extends JDialog {
             if (product != null) {
                 Object[] rowData = {
                     product.getName(),
-                    product.getWholesalerPrice().getValue() + " €",
+                    product.getWholesalerPrice().getValue() + " " + product.getWholesalerPrice().getCurrency(),
                     product.getStock(),
-                    product.isAvailable() ? "Sí" : "No"
+                    product.isAvailable()
                 };
                 // Add row to the table
                 tableModel.addRow(rowData);

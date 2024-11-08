@@ -84,7 +84,7 @@ public class Shop {
      * Add new product to inventory
      */
     public void addProduct(String nombreProducto, int precioProducto, int cantidadStock) {      
-        inventory.add(new Product(nombreProducto, new Amount(precioProducto, "€"), true, cantidadStock));
+        inventory.add(new Product(nombreProducto,new Amount(precioProducto, "€"), true, cantidadStock));
         JOptionPane.showMessageDialog(null, "El producto " + nombreProducto + " ha sido añadido con éxito!", "Exit Add Product", JOptionPane.INFORMATION_MESSAGE);  
     }
 
