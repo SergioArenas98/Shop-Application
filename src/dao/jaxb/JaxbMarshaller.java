@@ -23,7 +23,7 @@ public class JaxbMarshaller {
     	    String formattedDate = currentDate.format(formatter);
     	    
     	    // Set export route
-    	    String filePath = "C:/Users/sejum/git/Shop-DAM2M06/Shop-DAM2M06/jax/inventory_" + formattedDate + ".xml";
+    	    String filePath = "C:/Users/sejum/git/Shop-DAM2M06/Shop-DAM2M06/jaxb/inventory_" + formattedDate + ".xml";
             
     	    // Convert inventory to XML with Marshaller
             jaxbMarshaller.marshal(products, new File(filePath));
