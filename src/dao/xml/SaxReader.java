@@ -41,7 +41,7 @@ public class SaxReader extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
     	// Check if end element is "wholesaler_price"
-    	if (qName.equalsIgnoreCase("wholesaler_price")) {
+    	if (qName.equalsIgnoreCase("wholesalerPrice")) {
             product.setWholesalerPrice(new Amount(Double.parseDouble(data.toString()), "Euro"));
         // Check if end element is "stock"
         } else if (qName.equalsIgnoreCase("stock")) {
