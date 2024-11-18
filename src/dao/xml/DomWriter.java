@@ -82,7 +82,7 @@ public class DomWriter {
 	public boolean generateXml(){
 	    boolean success = true;
 	    // Set the file's route
-	    File newFolder = new File(System.getProperty("user.dir") + File.separator + "files");
+	    File newFolder = new File(System.getProperty("user.dir") + File.separator + "xml");
 
 	    if (!newFolder.exists()) {
 	        FolderNameView folderNameView = new FolderNameView(null);
@@ -108,7 +108,7 @@ public class DomWriter {
 	    }
 
 	    if (!success) {
-	        return false; // Return if the folder couldn't be created
+	        return false;
 	    }
 
 	    // Get the current date and format it as yyyy-mm-dd
