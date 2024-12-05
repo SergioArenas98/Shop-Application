@@ -19,9 +19,9 @@ public class ProductView extends JDialog implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
-	private JTextField nombre;
+	private JTextField name;
 	private JTextField stock;
-	private JTextField precio;
+	private JTextField price;
 	private JPanel buttonPane;
 	private JButton okButton;
 	private Shop shop;
@@ -46,18 +46,18 @@ public class ProductView extends JDialog implements ActionListener {
 		
 		if (option == Constants.OPTION_ADD_PRODUCT || option == Constants.OPTION_ADD_STOCK || option == Constants.OPTION_REMOVE_PRODUCT) {
 		
-			JLabel labelNombreProducto = new JLabel("Nombre Producto:");
+			JLabel labelNombreProducto = new JLabel("Product Name:");
 			labelNombreProducto.setBounds(53, 48, 129, 20);
 			labelNombreProducto.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			contentPanel.add(labelNombreProducto);
 			
-			nombre = new JTextField();
-			nombre.setBounds(207, 46, 164, 28);
-			contentPanel.add(nombre);
-			nombre.setColumns(10);
+			name = new JTextField();
+			name.setBounds(207, 46, 164, 28);
+			contentPanel.add(name);
+			name.setColumns(10);
 			
 			if (option == Constants.OPTION_ADD_PRODUCT || option == Constants.OPTION_ADD_STOCK) {
-				JLabel labelStockProducto = new JLabel("Stock Producto:");
+				JLabel labelStockProducto = new JLabel("Product Stock:");
 				labelStockProducto.setFont(new Font("Tahoma", Font.PLAIN, 16));
 				labelStockProducto.setBounds(53, 104, 129, 20);
 				contentPanel.add(labelStockProducto);
@@ -68,15 +68,15 @@ public class ProductView extends JDialog implements ActionListener {
 				contentPanel.add(stock);
 				
 				if (option == Constants.OPTION_ADD_PRODUCT) {
-					JLabel labelPrecioProducto = new JLabel("Precio Producto:");
-					labelPrecioProducto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-					labelPrecioProducto.setBounds(53, 162, 129, 20);
-					contentPanel.add(labelPrecioProducto);
+					JLabel labelProductPrice = new JLabel("Product Price:");
+					labelProductPrice.setFont(new Font("Tahoma", Font.PLAIN, 16));
+					labelProductPrice.setBounds(53, 162, 129, 20);
+					contentPanel.add(labelProductPrice);
 					
-					precio = new JTextField();
-					precio.setColumns(10);
-					precio.setBounds(207, 154, 164, 28);
-					contentPanel.add(precio);
+					price = new JTextField();
+					price.setColumns(10);
+					price.setBounds(207, 154, 164, 28);
+					contentPanel.add(price);
 				}
 			}
 		}
@@ -105,7 +105,7 @@ public class ProductView extends JDialog implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// if user clicks on OK button
+		// If user clicks on OK button
 		boolean productExists;
 		Product productFound;
 
@@ -116,14 +116,13 @@ public class ProductView extends JDialog implements ActionListener {
 			if (e.getSource() == okButton) {
 
 				// check if product does not exists
-				productExists = shop.productExists(nombre.getText());
+				productExists = shop.productExists(name.getText());
 
 				if (!productExists) {
-					shop.addProduct(nombre.getText(), Integer.parseInt(precio.getText()),
-							Integer.parseInt(stock.getText()));
+					shop.addProduct(name.getText(), Integer.parseInt(price.getText()), Integer.parseInt(stock.getText()));
 					dispose();
 				} else {
-					JOptionPane.showMessageDialog(null, "Error, el producto " + nombre.getText() + " ya existe.",
+					JOptionPane.showMessageDialog(null, "Error, product " + name.getText() + " already exists.",
 							"Product Already Exists", JOptionPane.ERROR_MESSAGE);
 					dispose();
 				}
@@ -136,15 +135,15 @@ public class ProductView extends JDialog implements ActionListener {
 
 			if (e.getSource() == okButton) {
 
-				// check if product does not exists
-				productFound = shop.findProduct(nombre.getText());
+				// Check if product does not exists
+				productFound = shop.findProduct(name.getText());
 
 				if (productFound != null) {
 					shop.addStock(productFound, Integer.parseInt(stock.getText()));
 					dispose();
 				} else {
 					JOptionPane.showMessageDialog(null,
-							"Error, no ha sido posible encontrar el producto " + nombre.getText() + ".",
+							"Error, product " + name.getText() + " not found.",
 							"Error Product Not Found", JOptionPane.ERROR_MESSAGE);
 					dispose();
 				}
@@ -157,15 +156,15 @@ public class ProductView extends JDialog implements ActionListener {
 
 			if (e.getSource() == okButton) {
 
-				// check if product does not exists
-				productFound = shop.findProduct(nombre.getText());
+				// Check if product does not exists
+				productFound = shop.findProduct(name.getText());
 
 				if (productFound != null) {
 					shop.deleteProduct(productFound);
 					dispose();
 				} else {
 					JOptionPane.showMessageDialog(null,
-							"Error, no ha sido posible eliminar el producto " + nombre.getText() + ".",
+							"Error, product " + name.getText() + " could not be deleted.",
 							"Error Delete Stock", JOptionPane.ERROR_MESSAGE);
 					dispose();
 				}

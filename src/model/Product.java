@@ -9,18 +9,17 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = { "available", "wholesalerPrice", "publicPrice", "stock" })
 public class Product {
 	
-	private int id;
+	private Long productId;
     private String name;
     private Amount publicPrice;
     private Amount wholesalerPrice;
     private boolean available = true;
     private int stock;  
     private static int totalProducts;
-    final static double EXPIRATION_RATE=0.60;
+    final static double EXPIRATION_RATE = 0.60;
     
 	public Product(String name, Amount wholesalerPrice, boolean available, int stock) {
 		super();
-		this.id = ++totalProducts;
 		this.name = name;
 		this.wholesalerPrice = wholesalerPrice;
 		this.publicPrice = new Amount(0.0, "");
@@ -30,17 +29,13 @@ public class Product {
 		totalProducts++;
 	}
 	
-	public Product() {
-		this.id = ++totalProducts;
-	}
-	
 	@XmlAttribute(name = "id")
-	public int getId() {
-		return id;
+	public Long getProductId() {
+		return productId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setProductId(Long productId) {
+		this.productId = productId;
 	}
 	
 	@XmlAttribute(name = "name")
@@ -104,7 +99,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", publicPrice=" + publicPrice.getValue() + ", wholesalerPrice="
+		return "Product [id=" + productId + ", name=" + name + ", publicPrice=" + publicPrice.getValue() + ", wholesalerPrice="
 				+ wholesalerPrice.getValue() + ", available=" + available + ", stock=" + stock + "]";
 	}
 }

@@ -1,4 +1,4 @@
-package dao;
+package dao.file;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,6 +10,8 @@ import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
+import dao.Dao;
 import main.Shop;
 import model.Amount;
 import model.Employee;
@@ -167,5 +169,17 @@ public class DaoImplFile implements Dao {
 
 	@Override
 	public void disconnect() {	
+	}
+
+	@Override
+	public void addProduct(Product product) {
+	}
+
+	@Override
+	public void updateProduct(Product product) {
+	}
+
+	@Override
+	public void deleteProduct(Long productId) {
 	}
 }

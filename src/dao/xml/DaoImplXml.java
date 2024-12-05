@@ -1,10 +1,10 @@
-package dao;
+package dao.xml;
 
 import java.util.ArrayList;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import dao.xml.DomWriter;
-import dao.xml.SaxReader;
+
+import dao.Dao;
 import main.Shop;
 import model.Employee;
 import model.Product;
@@ -65,5 +65,17 @@ public class DaoImplXml implements Dao {
 	
 	@Override
 	public void disconnect() {
+	}
+
+	@Override
+	public void addProduct(Product product) {
+	}
+
+	@Override
+	public void updateProduct(Product product) {
+	}
+
+	@Override
+	public void deleteProduct(Long productId) {	
 	}
 }

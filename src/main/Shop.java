@@ -16,8 +16,8 @@ import model.Amount;
 import java.util.Scanner;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import dao.DaoImplXml;
-import dao.jaxb.DaoImplJaxb;
+
+import dao.jdbc.DaoImplJDBC;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -27,8 +27,7 @@ public class Shop {
     public ArrayList<Product> inventory;
     private ArrayList<Sale> sales;
     int sale_num = 0;
-    // private DaoImplXml dao;
-    private DaoImplJaxb dao;
+    private DaoImplJDBC dao;
     final static double TAX_RATE = 1.04;
     String nameFolder;
 
@@ -36,7 +35,8 @@ public class Shop {
         cash = new Amount(150.0, "€");
         inventory = new ArrayList<Product>();
         sales = new ArrayList<Sale>();
-        this.dao = new DaoImplJaxb(this);
+        this.dao = new DaoImplJDBC();
+        dao.connect();
         readInventory();
     }
     
@@ -54,7 +54,7 @@ public class Shop {
 			}
 		});
     }
-    
+     
     public void setInventory(ArrayList<Product> inventory) {
         this.inventory = inventory;
     }
@@ -83,9 +83,11 @@ public class Shop {
     /**
      * Add new product to inventory
      */
-    public void addProduct(String nombreProducto, int precioProducto, int cantidadStock) {      
-        inventory.add(new Product(nombreProducto,new Amount(precioProducto, "€"), true, cantidadStock));
-        JOptionPane.showMessageDialog(null, "El producto " + nombreProducto + " ha sido añadido con éxito!", "Exit Add Product", JOptionPane.INFORMATION_MESSAGE);  
+    public void addProduct(String name, double price, int stock) {
+    	Product product = new Product(name, new Amount(price, "€"), true, stock);
+        dao.addProduct(product);
+        readInventory();
+        JOptionPane.showMessageDialog(null, product.getName() + " was added successfully!", "Exit Add Product", JOptionPane.INFORMATION_MESSAGE);  
     }
 
     /**
@@ -94,7 +96,9 @@ public class Shop {
     public void addStock(Product product, int newStock) {
     	newStock += product.getStock();
     	product.setStock(newStock);
-    	JOptionPane.showMessageDialog(null, "Se ha añadido stock al producto " + product.getName() + " con éxito!", "Exit Add Stock", JOptionPane.INFORMATION_MESSAGE);
+    	dao.updateProduct(product);
+    	readInventory();
+    	JOptionPane.showMessageDialog(null, product.getName() + " stock was added successfully!", "Exit Add Stock", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -115,8 +119,9 @@ public class Shop {
      * Delete product
      */
     public void deleteProduct(Product product) {
-        inventory.remove(product);
-        JOptionPane.showMessageDialog(null, "Se ha eliminado el producto " + product.getName() + " con éxito!", "Exit Delete Stock", JOptionPane.INFORMATION_MESSAGE);
+        dao.deleteProduct(product.getProductId());
+        readInventory();
+        JOptionPane.showMessageDialog(null, product.getName() + " was deleted successfully!", "Exit Delete Stock", JOptionPane.INFORMATION_MESSAGE);
     }
 	
     /**

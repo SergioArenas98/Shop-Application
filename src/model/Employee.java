@@ -1,7 +1,7 @@
 package model;
 
 import dao.Dao;
-import dao.DaoImplJDBC;
+import dao.jdbc.DaoImplJDBC;
 import main.Logable;
 
 public class Employee extends Person implements Logable {

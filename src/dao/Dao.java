@@ -8,11 +8,17 @@ public interface Dao {
     
 	void connect();
     
+	ArrayList<Product> getInventory();
+	
+	boolean writeInventory(ArrayList<Product> inventory);
+	
 	Employee getEmployee(int employeeId, String password);
     
 	void disconnect();
 	
-	ArrayList<Product> getInventory();
+	void addProduct(Product product);
 	
-	boolean writeInventory(ArrayList<Product> inventory);
+	void updateProduct(Product product);
+	
+	void deleteProduct(Long productId);
 }

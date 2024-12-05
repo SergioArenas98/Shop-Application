@@ -58,4 +58,16 @@ public class DaoImplJaxb implements Dao {
 	@Override
 	public void disconnect() {	
 	}
+
+	@Override
+	public void addProduct(Product product) {
+	}
+
+	@Override
+	public void updateProduct(Product product) {
+	}
+
+	@Override
+	public void deleteProduct(Long productId) {
+	}
 }
