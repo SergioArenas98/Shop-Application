@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import dao.Dao;
@@ -105,17 +106,15 @@ public class DaoImplJDBC implements Dao {
     // Export inventory to SQL database
 	public boolean writeInventory(ArrayList<Product> inventory) {
 		
-		String query = "INSERT INTO historical_inventory (id, id_product, productName, wholesalerPrice, available, stock, created_at) VALUES (?, ?, ?, ?);";
+		String query = "INSERT INTO historical_inventory (id_product, productName, wholesalerPrice, available, stock) VALUES (?, ?, ?, ?, ?);";
 			
         try (PreparedStatement ps = connection.prepareStatement(query)) {
             for (Product product : inventory) {
-            	// TODO el id supongo que será autoincrement, preguntar si la tabla ya debe estar creada
-            	ps.setLong(2, product.getProductId());
-                ps.setString(3, product.getName());
-                ps.setDouble(4, product.getWholesalerPrice().getValue());
-                ps.setBoolean(5, product.isAvailable());
-                ps.setInt(6, product.getStock());
-                // TODO ps.setInt(7, product.getDate());
+            	ps.setLong(1, product.getProductId());
+                ps.setString(2, product.getName());
+                ps.setDouble(3, product.getWholesalerPrice().getValue());
+                ps.setBoolean(4, product.isAvailable());
+                ps.setInt(5, product.getStock());
                 ps.addBatch();
             }
             ps.executeBatch();
@@ -132,7 +131,7 @@ public class DaoImplJDBC implements Dao {
 	public void addProduct(Product product) {
 		String query = "INSERT INTO products (productName, wholesalerPrice, available, stock) VALUES (?, ?, ?, ?);";
 		
-		try (PreparedStatement ps = connection.prepareStatement(query)) {
+		try (PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, product.getName());
             ps.setDouble(2, product.getWholesalerPrice().getValue());
             ps.setBoolean(3, product.isAvailable());
