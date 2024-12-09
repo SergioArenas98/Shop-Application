@@ -1,7 +1,9 @@
-package dao.jaxb;
+package dao;
 
 import java.util.ArrayList;
-import dao.Dao;
+
+import dao.jaxb.JaxbMarshaller;
+import dao.jaxb.JaxbUnMarshaller;
 import main.Shop;
 import model.Employee;
 import model.Product;
@@ -25,25 +27,25 @@ public class DaoImplJaxb implements Dao {
 	    Products inventory = JaxbUnmarshaller.init();
 	    
 	    // Check if inventory was created
-	    if (inventory != null) {
-	        return new ArrayList<>(inventory.getProducts());
-	    } else {
-	        return new ArrayList<>();
-	    }
+		if (inventory != null) {
+			return new ArrayList<>(inventory.getProducts());
+		} else {
+			return new ArrayList<>();
+		}
 	}
-	
+
 	@Override
 	public boolean writeInventory(ArrayList<Product> inventory) {
 
 		// Create JaxbMashaller object
 		JaxbMarshaller marshaller = new JaxbMarshaller();
-	    
-		// Get inventory with Products class
-	    Products allProducts = new Products();
-	    allProducts.setProducts(inventory);
 
-	    // Return inventory converted to XML
-	    return marshaller.init(allProducts);
+		// Get inventory with Products class
+		Products allProducts = new Products();
+		allProducts.setProducts(inventory);
+
+		// Return inventory converted to XML
+		return marshaller.init(allProducts);
 	}
 
 	@Override
