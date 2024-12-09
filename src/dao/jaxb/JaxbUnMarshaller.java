@@ -12,18 +12,17 @@ public class JaxbUnMarshaller {
 
 		try {
 			// Set import route
-			String filePath = "C:/Users/sejum/git/Shop-DAM2M06/Shop-DAM2M06/jaxb/inputInventory.xml";
+			File filePath = new File(System.getProperty("user.dir") + File.separator + "inputInventory.xml");
 			
 			// Create UnMarshaller object
 			JAXBContext context = JAXBContext.newInstance(Products.class);
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 			
 			// Return XML converted to Products
-			return (Products) unmarshaller.unmarshal(new File(filePath));
+			return (Products) unmarshaller.unmarshal(filePath);
 		} catch (JAXBException e) {
 			e.printStackTrace();
 			return null;
 		}
-
 	}
 }

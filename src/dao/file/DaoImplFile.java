@@ -29,11 +29,11 @@ public class DaoImplFile implements Dao {
 	@Override
 	public ArrayList<Product> getInventory() {
 	    // Set the file's route
-	    File f = new File(System.getProperty("user.dir") + File.separator + "files/inputInventory.txt");
+	    File filePath = new File(System.getProperty("user.dir") + File.separator + "files/inputInventory.txt");
 	    ArrayList<Product> products = new ArrayList<>();
 
 	    try {
-	        FileReader fr = new FileReader(f);
+	        FileReader fr = new FileReader(filePath);
 	        BufferedReader br = new BufferedReader(fr);
 
 	        // Read first line

@@ -1,5 +1,6 @@
 package dao.xml;
 
+import java.io.File;
 import java.util.ArrayList;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -29,7 +30,7 @@ public class DaoImplXml implements Dao {
 	        SAXParser saxParser = factory.newSAXParser();
 
 	        // Define path to XML file
-	        String filePath = "C:/Users/sejum/git/Shop-DAM2M06/Shop-DAM2M06/files/inputInventory.xml";
+	        File filePath = new File(System.getProperty("user.dir") + File.separator + "files/inputInventory.xml");
 	        
 	        // Parse XML file
 	        saxParser.parse(filePath, reader);
