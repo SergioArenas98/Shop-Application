@@ -27,12 +27,12 @@ To run this project locally, you need to have the following installed:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/shop-management-system.git
+   git clone https://github.com/SergioArenas98/Shop-Application.git
    ```
    
 2. **Navigate to the project directory**:
    ```bash
-   cd shop-management-system
+   cd Shop-Application
    ```
    
 3. **Open the project in your preferred IDE**.
