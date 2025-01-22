@@ -1,5 +1,11 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -7,23 +13,48 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name = "product")
 @XmlType(propOrder = { "available", "wholesalerPrice", "publicPrice", "stock" })
+@Entity
+@Table(name = "inventory")
 public class Product {
 	
+	@Id
+	@GeneratedValue
+	@Column(name = "id")
 	private Long productId;
+	
+	@Column(name = "productName")
     private String name;
+	
+	@Transient
     private Amount publicPrice;
-    private Amount wholesalerPrice;
-    private boolean available = true;
-    private int stock;  
-    private static int totalProducts;
-    final static double EXPIRATION_RATE = 0.60;
     
-	public Product(String name, Amount wholesalerPrice, boolean available, int stock) {
+	@Transient
+    private Amount wholesalerPrice;
+	
+	@Column(name = "available")
+    private boolean available = true;
+	
+	@Column(name = "stock")
+    private int stock;
+	
+	@Transient
+    private static int totalProducts;
+	
+	@Transient
+    final static double EXPIRATION_RATE = 0.60;
+	
+	@Column(name = "wholesalerPrice")
+	private Double price;
+	
+    public Product() {
+    }
+    
+	public Product(String name, Double price, boolean available, int stock) {
 		super();
 		this.name = name;
-		this.wholesalerPrice = wholesalerPrice;
-		this.publicPrice = new Amount(0.0, "");
-		this.publicPrice.setValue(getWholesalerPrice().getValue() * 2);
+		this.price = price;
+		this.wholesalerPrice = new Amount(price, "€");
+		this.publicPrice = new Amount(price, "");
 		this.available = available;
 		this.stock = stock;
 		totalProducts++;
@@ -63,7 +94,6 @@ public class Product {
 
 	public void setWholesalerPrice(Amount wholesalerPrice) {
 		this.wholesalerPrice = wholesalerPrice;
-		this.publicPrice = new Amount(wholesalerPrice.getValue() * 2, "€");
 	}
 	
 	@XmlElement(name = "available")
@@ -92,6 +122,15 @@ public class Product {
 		Product.totalProducts = totalProducts;
 	}
 	
+	
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+    	this.price = price;
+    }
+
 	// Reduce product price by 0.60 when soon to expire
 	public void expire() {
 		this.publicPrice.setValue(getPublicPrice().getValue() * EXPIRATION_RATE);

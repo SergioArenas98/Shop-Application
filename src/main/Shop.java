@@ -17,6 +17,7 @@ import java.util.Scanner;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import dao.hibernate.DaoImplHibernate;
 import dao.jdbc.DaoImplJDBC;
 
 import java.time.LocalDateTime;
@@ -27,7 +28,7 @@ public class Shop {
     public ArrayList<Product> inventory;
     private ArrayList<Sale> sales;
     int sale_num = 0;
-    private DaoImplJDBC dao;
+    private DaoImplHibernate dao;
     final static double TAX_RATE = 1.04;
     String nameFolder;
 
@@ -35,7 +36,7 @@ public class Shop {
         cash = new Amount(150.0, "€");
         inventory = new ArrayList<Product>();
         sales = new ArrayList<Sale>();
-        this.dao = new DaoImplJDBC();
+        this.dao = new DaoImplHibernate();
         dao.connect();
         readInventory();
     }
@@ -84,7 +85,7 @@ public class Shop {
      * Add new product to inventory
      */
     public void addProduct(String name, double price, int stock) {
-    	Product product = new Product(name, new Amount(price, "€"), true, stock);
+    	Product product = new Product(name, price, true, stock);
         dao.addProduct(product);
         readInventory();
         JOptionPane.showMessageDialog(null, product.getName() + " was added successfully!", "Exit Add Product", JOptionPane.INFORMATION_MESSAGE);  
