@@ -24,7 +24,7 @@ public class InventoryView extends JDialog {
 
         tableModel = new DefaultTableModel(
                 new Object[][]{},
-                new String[]{"Producto", "Precio", "Stock", "Disponibilidad"}
+                new String[]{"ID", "Producto", "Precio", "Stock", "Disponibilidad"}
         );
 
         JScrollPane scrollPane = new JScrollPane();
@@ -32,10 +32,11 @@ public class InventoryView extends JDialog {
         add(scrollPane);
 
         inventoryTable = new JTable(tableModel);
-        inventoryTable.getColumnModel().getColumn(0).setPreferredWidth(133);
-        inventoryTable.getColumnModel().getColumn(1).setPreferredWidth(116);
-        inventoryTable.getColumnModel().getColumn(2).setPreferredWidth(106);
-        inventoryTable.getColumnModel().getColumn(3).setPreferredWidth(104);
+        inventoryTable.getColumnModel().getColumn(0).setPreferredWidth(50);
+        inventoryTable.getColumnModel().getColumn(1).setPreferredWidth(133);
+        inventoryTable.getColumnModel().getColumn(2).setPreferredWidth(116);
+        inventoryTable.getColumnModel().getColumn(3).setPreferredWidth(106);
+        inventoryTable.getColumnModel().getColumn(4).setPreferredWidth(104);
         scrollPane.setViewportView(inventoryTable);
 
         JPanel panel = new JPanel();
@@ -61,8 +62,10 @@ public class InventoryView extends JDialog {
 
         // Iterate over all products add to the table
         for (Product product : products) {
+        	System.out.println(product);
             if (product != null) {
                 Object[] rowData = {
+                	product.getProductId(),
                     product.getName(),
                     product.getWholesalerPrice().getValue() + " " + product.getWholesalerPrice().getCurrency(),
                     product.getStock(),

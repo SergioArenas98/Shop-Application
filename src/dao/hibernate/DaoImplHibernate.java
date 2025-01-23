@@ -70,6 +70,11 @@ public class DaoImplHibernate implements Dao {
             }
             // Query to get inventory
             products = (ArrayList<Product>) session.createQuery("FROM Product", Product.class).list();
+            
+            for (Product product : products) {
+                product.setWholesalerPrice(new Amount(product.getPrice(), "€"));
+                product.setPublicPrice(new Amount(product.getPrice() * 2, "€"));
+            }
 
             transaction.commit();
             

@@ -54,7 +54,7 @@ public class Product {
 		this.name = name;
 		this.price = price;
 		this.wholesalerPrice = new Amount(price, "€");
-		this.publicPrice = new Amount(price, "");
+		this.publicPrice = new Amount(price * 2, "€");
 		this.available = available;
 		this.stock = stock;
 		totalProducts++;
@@ -138,7 +138,11 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [id=" + productId + ", name=" + name + ", publicPrice=" + publicPrice.getValue() + ", wholesalerPrice="
-				+ wholesalerPrice.getValue() + ", available=" + available + ", stock=" + stock + "]";
+	    return "\nProduct --> ID = " + productId + 
+	           ", Name = " + name + 
+	           ", Public Price = " + publicPrice.getValue() + 
+	           ", Wholesaler Price = " + wholesalerPrice.getValue() + 
+	           ", Available = " + available + 
+	           ", Stock = " + stock + "\n";
 	}
 }
