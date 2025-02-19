@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +23,7 @@ public class Product {
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private Long productId;
+	private int productId;
 	
 	@Column(name = "productName")
     private String name;
@@ -46,6 +49,8 @@ public class Product {
 	@Column(name = "wholesalerPrice")
 	private Double price;
 	
+	private static List<Product> productList = new ArrayList<>();
+	
     public Product() {
     }
     
@@ -60,12 +65,26 @@ public class Product {
 		totalProducts++;
 	}
 	
+	// Constructor for getInventory
+	public Product(int productId, String name, Double price, boolean available, int stock) {
+		super();
+		this.productId = productId;
+		this.name = name;
+		this.price = price;
+		this.wholesalerPrice = new Amount(price, "€");
+		this.publicPrice = new Amount(price * 2, "€");
+		this.available = available;
+		this.stock = stock;
+		totalProducts++;
+		productList.add(this);
+	}
+	
 	@XmlAttribute(name = "id")
-	public Long getProductId() {
+	public int getProductId() {
 		return productId;
 	}
 
-	public void setProductId(Long productId) {
+	public void setProductId(int productId) {
 		this.productId = productId;
 	}
 	
@@ -130,6 +149,14 @@ public class Product {
     public void setPrice(Double price) {
     	this.price = price;
     }
+    
+    public static int getLastProductId() {
+        if (productList.isEmpty()) {
+            return 0;
+        }
+        return productList.get(productList.size() - 1).getProductId();
+    }
+
 
 	// Reduce product price by 0.60 when soon to expire
 	public void expire() {

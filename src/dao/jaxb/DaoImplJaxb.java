@@ -1,9 +1,8 @@
-package dao;
+package dao.jaxb;
 
 import java.util.ArrayList;
 
-import dao.jaxb.JaxbMarshaller;
-import dao.jaxb.JaxbUnMarshaller;
+import dao.Dao;
 import main.Shop;
 import model.Employee;
 import model.Product;

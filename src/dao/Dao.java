@@ -20,5 +20,5 @@ public interface Dao {
 	
 	void updateProduct(Product product);
 	
-	void deleteProduct(Long productId);
+	void deleteProduct(int productId);
 }

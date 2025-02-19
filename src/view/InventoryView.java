@@ -62,7 +62,6 @@ public class InventoryView extends JDialog {
 
         // Iterate over all products add to the table
         for (Product product : products) {
-        	System.out.println(product);
             if (product != null) {
                 Object[] rowData = {
                 	product.getProductId(),

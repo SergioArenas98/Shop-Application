@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 
 import dao.hibernate.DaoImplHibernate;
 import dao.jdbc.DaoImplJDBC;
+import dao.mongodb.DaoImplMongoDB;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -28,7 +29,7 @@ public class Shop {
     public ArrayList<Product> inventory;
     private ArrayList<Sale> sales;
     int sale_num = 0;
-    private DaoImplHibernate dao;
+    private DaoImplMongoDB dao;
     final static double TAX_RATE = 1.04;
     String nameFolder;
 
@@ -36,7 +37,7 @@ public class Shop {
         cash = new Amount(150.0, "€");
         inventory = new ArrayList<Product>();
         sales = new ArrayList<Sale>();
-        this.dao = new DaoImplHibernate();
+        this.dao = new DaoImplMongoDB();
         dao.connect();
         readInventory();
     }

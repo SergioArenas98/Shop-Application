@@ -1,12 +1,12 @@
 package model;
 
 import dao.Dao;
-import dao.jdbc.DaoImplJDBC;
+import dao.mongodb.DaoImplMongoDB;
 import main.Logable;
 
 public class Employee extends Person implements Logable {
 
-    private Dao employeeDao = new DaoImplJDBC();
+    private Dao employeeDao = new DaoImplMongoDB();
 
     public Employee(int employeeId, String password) {
         super();

@@ -89,7 +89,7 @@ public class LoginView extends JFrame implements ActionListener {
                     
                     } else {
                         counterErrorLogin++;
-                        JOptionPane.showMessageDialog(null, "Error login, usuario o password incorrectos", "Error login", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Usuario o password incorrectos", "Error login", JOptionPane.ERROR_MESSAGE);
                         textFieldEmployeeId.setText("");
                         textFieldPassword.setText("");
                         
@@ -106,7 +106,7 @@ public class LoginView extends JFrame implements ActionListener {
                     }
                 }
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null, "Error login, el empleado debe ser numérico", "Error login", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El empleado debe ser numérico", "Error login", JOptionPane.ERROR_MESSAGE);
                 textFieldEmployeeId.setText("");
                 textFieldPassword.setText("");
                 
